@@ -4,6 +4,8 @@ This has the function for the Clarke Error Grid
 
 CLARKE ERROR GRID ANALYSIS      ClarkeErrorGrid.py
 
+Need Matplotlib Pyplot
+
 
 The Clarke Error Grid shows the differences between a blood glucose predictive measurement and a reference measurement,
 and it shows the clinical significance of the differences between these values.

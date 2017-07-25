@@ -35,7 +35,7 @@ Zone E: Erroneous treatment
 
 
 SYNTAX:
-        plot, zone = ClarkeErrorGrid.clarke_error_grid(ref_values, pred_values)
+        plot, zone = clarke_error_grid(ref_values, pred_values, title_string)
 
 INPUT:
         ref_values          List of n reference values.

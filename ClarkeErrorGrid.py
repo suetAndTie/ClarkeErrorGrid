@@ -38,8 +38,9 @@ SYNTAX:
         plot, zone = ClarkeErrorGrid.clarke_error_grid(ref_values, pred_values)
 
 INPUT:
-        ref_values          List of n reference values
-        pred_values         List of n prediciton values
+        ref_values          List of n reference values.
+        pred_values         List of n prediciton values.
+        title_string        String of the title.
 
 OUTPUT:
         plot                The Clarke Error Grid Plot returned by the function.
@@ -48,9 +49,7 @@ OUTPUT:
                             0=A, 1=B, 2=C, 3=D, 4=E
 
 EXAMPLE:
-        from ClarkeErrorGrid import clarke_error_grid
-        ...
-        plot, zone = clarke_error_grid(ref_values, pred_values)
+        plot, zone = clarke_error_grid(ref_values, pred_values, "00897741 Linear Regression")
         plot.show()
 
 References:
@@ -86,7 +85,7 @@ import matplotlib.pyplot as plt
 
 #This function takes in the reference values and the prediction values as lists and returns a list with each index corresponding to the total number
 #of points within that zone (0=A, 1=B, 2=C, 3=D, 4=E) and the plot
-def clarke_error_grid(ref_values, pred_values):
+def clarke_error_grid(ref_values, pred_values, title_string):
 
     #Checking to see if the lengths of the reference and prediction arrays are the same
     assert (len(ref_values) == len(pred_values)), "Unequal number of values (reference : {}) (prediction : {}).".format(len(ref_values), len(pred_values))
@@ -102,7 +101,7 @@ def clarke_error_grid(ref_values, pred_values):
 
     #Set up plot
     plt.scatter(ref_values, pred_values, c='black')
-    plt.title("Clarke Error Grid")
+    plt.title(title_string + " Clarke Error Grid")
     plt.xlabel("Reference Concentration (mg/dl)")
     plt.ylabel("Prediction Concentration (mg/dl)")
     plt.xticks([0, 50, 100, 150, 200, 250, 300, 350, 400])

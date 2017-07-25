@@ -3,6 +3,7 @@ This has the function for the Clarke Error Grid
 
 
 Made by Trevor Tsue
+7/18/17
 
 
 CLARKE ERROR GRID ANALYSIS      ClarkeErrorGrid.py

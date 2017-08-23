@@ -100,7 +100,7 @@ def clarke_error_grid(ref_values, pred_values, title_string):
     plt.clf()
 
     #Set up plot
-    plt.scatter(ref_values, pred_values, c='black')
+    plt.scatter(ref_values, pred_values, marker='o', color='black', s=8)
     plt.title(title_string + " Clarke Error Grid")
     plt.xlabel("Reference Concentration (mg/dl)")
     plt.ylabel("Prediction Concentration (mg/dl)")

@@ -123,7 +123,7 @@ def clarke_error_grid(ref_values, pred_values, title_string, xlabel='Reference C
    # plt.fill_between([175/3,400/1.2], [70,400], facecolor =a_color, alpha = 0.8)
     #For B
     plt.fill_between([70,290], [180,400], [80,350], facecolor =b_color, alpha = .25)
-    plt.fill_between([290,335],[400,400], [350,400], facecolor =b_color, alpha = .25)
+    plt.fill_between([290,340],[400,400], [340,400], facecolor =b_color, alpha = .25)
     plt.fill_between([245,400],[195,320],[194.5,194.5], facecolor = b_color, alpha = .25)
     plt.fill_between([240,400],[195.5,195.5],[180,180], facecolor = b_color, alpha = .25)
     plt.fill_between([85,240],[69,195],[69.75,69.75], facecolor = b_color, alpha = .25)

@@ -47,6 +47,19 @@ SYNTAX:
 INPUT:
         ref_values          List of n reference values
         pred_values         List of n prediciton values
+        title_string        Name of Graph
+        xlabel              Title x-axis (optional)
+        ylabel              Title y-axis (optional
+        scatter_c           Change color of data points (optional)
+        a_color             Change color of Zone A (optional
+        b_color             Change color of Zone B (optional)
+        c_color             Change color of Zone C (optional)
+        d_color             Change color of Zone D (optional)
+        e_color             Change color of Zone E (optional)
+        border_color        Change color of Zone borders (optional)
+        regression_color    Change color of regression line (optional)
+        scatter_opactiy     Change opacity of data points (optional)
+        back_opacity        Change opacity of zones (optional)
 
 OUTPUT:
         plot                The Clarke Error Grid Plot returned by the function.

@@ -1,8 +1,7 @@
-import matplotlib.pyplot as plt
-import ClarkeErrorGrid as CGM
-import numpy as np
+import ClarkeErrorGrid as EGA
 import random
 import math
+import numpy as np
 
 def make_data():
     #Generates Random CGM and and Reference data
@@ -20,5 +19,5 @@ def make_data():
     return [cgm, reference]
 
 data = make_data()
-fig, zone = CGM.clarke_error_grid(data[0], data[1], "CGM")
-fig.savefig("figure")
+fig, zone = EGA.clarke_error_grid(data[0], data[1], "CGM")
+fig.savefig("example_EGA.png")

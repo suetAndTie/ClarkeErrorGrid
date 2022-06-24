@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import random
-import math
+
 '''
 CLARKE ERROR GRID ANALYSIS      ClarkeErrorGrid.py
 Need Matplotlib Pyplot
@@ -67,9 +65,10 @@ March 29 2013
 #This function takes in the reference values and the prediction values as lists and returns a list with each index corresponding to the total number
 #of points within that zone (0=A, 1=B, 2=C, 3=D, 4=E) and the plot
 #Has optiional params for changing colors of lines, backgrounds, and datapoints. Can also change opacity of points and lables for the x and y axis.
-def clarke_error_grid(ref_values, pred_values, title_string, xlabel='Reference Concentration (mg/dL)', ylabel='Prediction Concentration (mg/dL)', 
-                      scatter_c='black', line_c='b', a_color = '#1874CD', b_color='#BFEFFF', c_color='#F8F8FF', regression_color = 'black',
-                     d_color='#FFB6C1', e_color='#CD5555', opacity=.25, border_color = 'black'):
+def clarke_error_grid(
+    ref_values, pred_values, title_string, xlabel='Reference Concentration (mg/dL)', ylabel='Prediction Concentration (mg/dL)', 
+    scatter_c='black', a_color = '#1874CD', b_color='#BFEFFF', c_color='#F8F8FF', d_color='#FFB6C1', e_color='#CD5555',
+    border_color = 'black', regression_color = 'black', scatter_opacity=0.25, back_opacity=0.25):
 
     #Checking to see if the lengths of the reference and prediction arrays are the same
     assert (len(ref_values) == len(pred_values)), "Unequal number of values (reference : {}) (prediction : {}).".format(len(ref_values), len(pred_values))
@@ -84,7 +83,7 @@ def clarke_error_grid(ref_values, pred_values, title_string, xlabel='Reference C
     plt.clf()
 
     #Set up plot
-    plt.scatter(ref_values, pred_values, marker='o', color=scatter_c, s=8, alpha=opacity)
+    plt.scatter(ref_values, pred_values, marker='o', color=scatter_c, s=8, alpha=scatter_opacity, zorder=2)
     plt.title(title_string + " Clarke Error Grid")
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -96,49 +95,30 @@ def clarke_error_grid(ref_values, pred_values, title_string, xlabel='Reference C
     plt.gca().set_xlim([0, 400])
     plt.gca().set_ylim([0, 400])
     plt.gca().set_aspect((400)/(400))
-
+    
     #Plot zone lines
-    plt.plot([0,400], [0,400], ':', c=regression_color)                      #Theoretical 45 regression line
-    plt.plot([0, 175/3], [70, 70], '-', c=border_color)
-    #plt.plot([175/3, 320], [70, 400], '-', c='black')
-    plt.plot([175/3, 400/1.2], [70, 400], '-', c=border_color)           #Replace 320 with 400/1.2 because 100*(400 - 400/1.2)/(400/1.2) =  20% error
-    plt.plot([70, 70], [84, 400],'-', c=border_color)
-    plt.plot([0, 70], [180, 180], '-', c=border_color)
-    plt.plot([70, 290],[180, 400],'-', c=border_color)
-    # plt.plot([70, 70], [0, 175/3], '-', c='black')
-    plt.plot([70, 70], [0, 56], '-', c=border_color)                     #Replace 175.3 with 56 because 100*abs(56-70)/70) = 20% error
-    # plt.plot([70, 400],[175/3, 320],'-', c='black')
-    plt.plot([70, 400], [56, 320],'-', c=border_color)
-    plt.plot([180, 180], [0, 70], '-', c=border_color)
-    plt.plot([180, 400], [70, 70], '-', c=border_color)
-    plt.plot([240, 240], [70, 180],'-', c=border_color)
-    plt.plot([240, 400], [180, 180], '-', c=border_color)
-    plt.plot([130, 180], [0, 70], '-', c=border_color)
+    plt.plot([0,400], [0,400], ':', c=regression_color, zorder=3)   
+    zone_lines=[[[0, 175/3], [70, 70]], [[175/3, 400/1.2], [70, 400]], [[70, 70], [84, 400]], [[0, 70], 
+        [180, 180]], [[70, 290], [180, 400]], [[70, 70], [0, 56]], [[70, 400], [56, 320]], [[180, 180], 
+        [0, 70]], [[180, 400], [70, 70]], [[240, 240], [70, 180]], [[240, 400], [180, 180]], [[130, 180], 
+        [0, 70]]]
+    for i in zone_lines:
+        plt.plot(i[0], i[1], '-', c=border_color, zorder=3)
     
     #Change background colors
-    #For A
-    plt.fill_between([0,200/3], [70,70], facecolor =a_color, alpha =.25)
-    plt.fill_between([205/3,335],[80,400],[55,270],facecolor=a_color, alpha =.25)
-    plt.fill_between([334.75,400],[400,400],[270,320],facecolor=a_color, alpha = .25)
-   # plt.fill_between([175/3,400/1.2], [70,400], facecolor =a_color, alpha = 0.8)
-    #For B
-    plt.fill_between([70,290], [180,400], [80,350], facecolor =b_color, alpha = .25)
-    plt.fill_between([290,340],[400,400], [340,400], facecolor =b_color, alpha = .25)
-    plt.fill_between([245,400],[195,320],[194.5,194.5], facecolor = b_color, alpha = .25)
-    plt.fill_between([240,400],[195.5,195.5],[180,180], facecolor = b_color, alpha = .25)
-    plt.fill_between([85,240],[69,195],[69.75,69.75], facecolor = b_color, alpha = .25)
-    plt.fill_between([130,180],[70,70],[0,70], facecolor = b_color, alpha = .25)
-    plt.fill_between([85,130],[70.4,70.4 ], facecolor = b_color, alpha = .25)
-    plt.fill_between([70,86],[53,211/3], facecolor = b_color, alpha = .25)
-    #For C
-    plt.fill_between([130,180], [0,70], facecolor =c_color, alpha=.25)
-    plt.fill_between([70,290],[400,400], [180,400], facecolor=c_color, alpha=.25)
-    #For D
-    plt.fill_between([240,400],[180,180],[70,70], facecolor =d_color, alpha = .25)
-    plt.fill_between([0,70],[180,180],[70,70], facecolor =d_color, alpha = .25)
-    #For E
-    plt.fill_between([180, 400], [70,70],facecolor =e_color, alpha = .25)
-    plt.fill_between([0,70], [400,400],[180,180], facecolor =e_color, alpha = .25)
+    regions = [([0,60], [70,70], a_color), ([60, 70], [50, 60], a_color), ([60, 335],[70,400],[50,270], a_color), 
+        ([334.75,400],[400,400],[270,320], a_color), ([70,290], [180,400], [80,350], b_color), 
+        ([290,335],[400,400], [350,400], b_color), ([245,400],[195,320],[194.5,194.5], b_color), 
+        ([240,400],[195.5,195.5],[180,180], b_color), ([85,240],[69,195],[69.75,69.75], b_color), 
+        ([130,180],[70,70],[0,70], b_color), ([85,130],[70.4,70.4 ], b_color), ([70,86],[53,211/3], b_color), 
+        ([130,180], [0,70], c_color), ([70,290],[400,400], [180,400], c_color), ([240,400],[180,180],[70,70], d_color),
+        ([0,60],[180,180],[70,70], d_color), ([60, 70], [180, 180], [70, 90], d_color), ([180, 400], [70,70], e_color), 
+        ([0,70], [400,400],[180,180], e_color)]
+    for i in regions:
+        if len(i) == 4:
+            plt.fill_between(i[0],i[1],i[2],facecolor=i[3], alpha=back_opacity, zorder = 1)
+        else:
+            plt.fill_between(i[0], i[1], facecolor=i[2], alpha=back_opacity, zorder=1)
     
     #Add zone titles
     plt.text(30, 15, "A", fontsize=15)

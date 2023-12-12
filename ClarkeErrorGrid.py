@@ -92,9 +92,9 @@ def clarke_error_grid(ref_values, pred_values, title_string):
 
     #Checks to see if the values are within the normal physiological range, otherwise it gives a warning
     if max(ref_values) > 400 or max(pred_values) > 400:
-        print "Input Warning: the maximum reference value {} or the maximum prediction value {} exceeds the normal physiological range of glucose (<400 mg/dl).".format(max(ref_values), max(pred_values))
+        print("Input Warning: the maximum reference value {} or the maximum prediction value {} exceeds the normal physiological range of glucose (<400 mg/dl).".format(max(ref_values), max(pred_values)))
     if min(ref_values) < 0 or min(pred_values) < 0:
-        print "Input Warning: the minimum reference value {} or the minimum prediction value {} is less than 0 mg/dl.".format(min(ref_values),  min(pred_values))
+        print("Input Warning: the minimum reference value {} or the minimum prediction value {} is less than 0 mg/dl.".format(min(ref_values),  min(pred_values)))
 
     #Clear plot
     plt.clf()

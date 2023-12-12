@@ -72,6 +72,10 @@ Made by:
 Trevor Tsue
 7/18/17
 
+Editted by:
+David Gerard
+12/12/2023
+
 Based on the Matlab Clarke Error Grid Analysis File Version 1.2 by:
 Edgar Guevara Codina
 codina@REMOVETHIScactus.iico.uaslp.mx

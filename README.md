@@ -6,6 +6,9 @@ This has the function for the Clarke Error Grid
 * Exemples of how to use the functions in `ClarkeErrorGrid.py` can be found in `example.ipynb`.
 
 ## Context
+
+![Clarke Error Grid](preview.png)
+
 The Clarke Error Grid shows the differences between a blood glucose predictive measurement and a reference measurement, and it shows the clinical significance of the differences between these values.
 The x-axis corresponds to the reference value and the y-axis corresponds to the prediction.
 The diagonal line shows the prediction value is the exact same as the reference value.

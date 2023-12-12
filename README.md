@@ -1,5 +1,5 @@
 # ClarkeErrorGrid
-This has the function for the Clarke Error Grid
+This repository present python code to generate Clarke Error Grids in python with `matplotlib`.
 
 ## Repository structure
 * All the code to generate Clarke Error Grids and assess where the data lies is located in `ClarkeErrorGrid.py`.

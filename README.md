@@ -9,32 +9,14 @@ This repository present python code to generate Clarke Error Grids in python wit
 
 ![Clarke Error Grid](preview.png)
 
-The Clarke Error Grid shows the differences between a blood glucose predictive measurement and a reference measurement, and it shows the clinical significance of the differences between these values.
-The x-axis corresponds to the reference value and the y-axis corresponds to the prediction.
-The diagonal line shows the prediction value is the exact same as the reference value.
-This grid is split into five zones:
+The Clarke Error Grid is a graphical tool used in diabetes management to assess the clinical accuracy of blood glucose monitoring systems (see fig. [^grids]). It consists of a grid that compares measured blood glucose values to reference values. The grid is divided into 5 zones, each representing a different level of clinical significance in terms of treatment decisions.
 
-* **Zone A: Clinically Accurate**
-    This zone holds the values that differ from the reference values no more than 20 percent
-    or the values in the hypoglycemic range (<70 mg/dl).
-    According to the literature, values in zone A are considered clinically accurate.
-    These values would lead to clinically correct treatment decisions.
+- **Zone A - Clinically Accurate:** This zone holds the values that differ from the reference values no more than 20 percent or the values in the hypoglycemic range (<70 mg/dl).
+- **Zone B - Clinically Acceptable:** This zone holds values that differ more than 20 percent but would lead to no treatment errors.
+- **Zone C - Over-correcting:** The real BG levels are outside of the acceptable levels while the predictions lie within the acceptable range.
+- **Zone D - Failure to Detect:** The real BG levels are outside of the acceptable levels while the predictions lie within the acceptable range.
+- **Zone E - Erroneous treatment:** Prediction values are opposite to actual BG levels, and treatment would aggravate the condition.
 
-* **Zone B: Clinically Acceptable**
-    This zone holds values that differe more than 20 percent but would lead to
-    benign or no treatment based on assumptions.
-
-* **Zone C: Overcorrecting**
-    This zone leads to overcorrecting acceptable BG levels.
-
-* **Zone D: Failure to Detect**
-    This zone leads to failure to detect and treat errors in BG levels.
-    The actual BG levels are outside of the acceptable levels while the predictions
-    lie within the acceptable range
-
-* **Zone E: Erroneous treatment**
-    This zone leads to erroneous treatment because prediction values are opposite to
-    actual BG levels, and treatment would be opposite to what is recommended.
 
 ## Credits
 
